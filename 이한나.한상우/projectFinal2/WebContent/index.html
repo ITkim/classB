@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>chart1.html</title>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {
+        "packages":["map"], "mapsApiKey": "AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY"
+    });
+      //google.charts.setOnLoadCallback(drawChart);
+     
+      function drawChart(data) {
+    	  console.log(data);
+    	 data = eval(data);
+		
+        var data = google.visualization.arrayToDataTable(data);
+
+    	 //차트의 타이틀
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+
+        var map = new google.visualization.Map(document.getElementById('piechart'));
+        map.draw(data, {
+          showTooltip: true,
+          showInfoWindow: true
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+    
+    <br><hr><br>
+    <button onclick="ajaxReq()">압구정 지도</button>
+    
+    	<script type="text/javascript">
+	function ajaxReq(){
+		 var xhttp = new XMLHttpRequest();
+		 
+		 xhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		    	drawChart(this.responseText);
+		    }
+		  };
+		  xhttp.open("GET", "map1.jsp", true);
+		  xhttp.send();
+		}
+
+</script>
+</body>
+<body>
+	<button onclick="ajaxReq1()">역삼1동 지도</button>
+    
+    	<script type="text/javascript">
+	function ajaxReq1(){
+		 var xhttp = new XMLHttpRequest();
+		 
+		 xhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		    	drawChart(this.responseText);
+		    }
+		  };
+		  xhttp.open("GET", "map2.jsp", true);
+		  xhttp.send();
+		}
+
+</script>
+  </body>
+<body>
+	<button onclick="ajaxReq2()">역삼2동 지도</button>
+    
+    	<script type="text/javascript">
+	function ajaxReq2(){
+		 var xhttp = new XMLHttpRequest();
+		 
+		 xhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		    	drawChart(this.responseText);
+		    }
+		  };
+		  xhttp.open("GET", "map3.jsp", true);
+		  xhttp.send();
+		}
+
+</script>
+  </body>
+</html>

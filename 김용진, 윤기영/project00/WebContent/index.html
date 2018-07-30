@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet1" type="text/css" href="WebContent/css/Mystyle.css">
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<style>
+	.ajaxBtn1{
+		background-color:#3f51b5;	
+	}
+	.ajaxBtn2{
+		background-color:#ffffff;	
+	}
+</style>
+</head>
+<body class="w3-content" style="max-width:1300px">
+
+<!-- First Grid: Logo & About -->
+<div class="w3-row">
+  <div class="w3-half w3-black w3-container w3-center" style="height:700px">
+    <div class="w3-padding-64">
+      <h1>7대 항만 물동량 분석</h1>
+    </div>
+    <div class="w3-padding-64">
+      <a href="#" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16">개요</a>
+      <a href="#work" class="w3-button w3-black w3-block w3-hover-teal w3-padding-16">지역별 거점 항만</a>
+      <a href="#work" class="w3-button w3-black w3-block w3-hover-dark-grey w3-padding-16">연도별 물동량 시각화</a>
+      <a href="#contact" class="w3-button w3-black w3-block w3-hover-brown w3-padding-16">구현하지 못한 기능</a>
+    </div>
+  </div>
+  <div class="w3-half w3-blue-grey w3-container" style="height:700px">
+    <div class="w3-padding-64 w3-center">
+      <h1>개요</h1>
+      <a href="http://www.nlic.go.kr/nlic/front.action" target="_blank">
+      <img src="image/logo.gif" class="w3-margin w3-circle" alt="국가물류통합정보센터" style="width:50%" >
+      </a>
+      <div class="w3-left-align w3-padding-large">
+        <p>국가 물류 통합 정보센터는 기존의 개별적으로 제공하던 육해공 물류정보를 수집, 통합하여 제공하는 국토교통부 산하의 통합정보 센터입니다. </p>
+        <p>'국가 물류 통합 정보센터'의 데이터를 기반으로 하여 2013년부터 2017년까지 5개년간의 물동량을 구글 차트를 통해 분석,시각화 하였습니다.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Second Grid: Work & Resume -->
+<div class="w3-row">
+  <div class="w3-half w3-light-grey w3-center" style="min-height:800px" id="work">
+    <div class="w3-padding-64">
+      <h2>대한민국 7대 물류 거점 별 위치</h2>
+      <p>(수출입 물동량 2억톤 이상급 기준) </p>
+    </div>
+    <div class="w3-row"><script type='text/javascript' src='http://www.google.com/jsapi'></script>
+<script type='text/javascript'>google.load('visualization', '1', {'packages': ['geochart']});
+google.setOnLoadCallback(drawVisualization);
+
+function drawVisualization() {
+	var data = new google.visualization.DataTable();
+
+	data.addColumn('string', 'Country');
+	data.addColumn('number', 'Value'); 
+	data.addColumn({type:'string', role:'tooltip'});
+	var ivalue = new Array();
+	
+	
+	data.addRows([[{v:'KR-26', f:'부산항'},1,'상세차트 보기']]);
+	ivalue['KR-26'] = '#f1f1f1';
+	
+	data.addRows([[{v:'KR-28',f:'인천항'},5,'상세차트 보기']]);
+	ivalue['KR-28'] = '#ffffff';
+	
+	data.addRows([[{v:'KR-31',f:'울산항'},6,'상세차트 보기']]);
+	ivalue['KR-31'] = '#ffffff';	
+	
+	data.addRows([[{v:'KR-44',f:'대산항'},8,'상세차트 보기']]);
+	ivalue['KR-44'] = '#ffffff';	
+
+	data.addRows([[{v:'KR-41',f:'평택항'},10,'상세차트 보기']]);
+	ivalue['KR-41'] = '#ffffff';
+	
+	data.addRows([[{v:'KR-47',f:'포항 영일만항'},11,'상세차트 보기']]);
+	ivalue['KR-47'] = '#ffffff';
+	
+	data.addRows([[{v:'KR-46',f:'광양항'},15,'상세차트 보기']]);
+	ivalue['KR-46'] = '#ffffff';
+
+	var options = {
+		backgroundColor: {fill:'#f1f1f1',stroke:'#f1f1f1' ,strokeWidth:0 },
+		colorAxis:  {minValue: 0, maxValue: 21,  colors: ['#37a352','#3366cc','#37a352','#3755a2','#3755a2','#3182BD','#ff9900','#ff9900','#f27490','#d84375','#83609b','#9ECAE1','#83609b','#83609b','#83609b','#4e7f84','#83609b','#83609b','#83609b','#83609b','#83609b','#dd4477']},
+		legend: 'none',	
+		backgroundColor: {fill:'#f1f1f1',stroke:'#f1f1f1' ,strokeWidth:0 },	
+		datalessRegionColor: '#f5f5f5',
+		displayMode: 'regions', 
+		enableRegionInteractivity: 'true', 
+		resolution: 'provinces',
+		sizeAxis: {minValue: 1, maxValue:1,minSize:10,  maxSize: 10},
+		region:'KR', //country code
+		keepAspectRatio: true,
+		width:600,
+		height:400,
+		tooltip: {textStyle: {color: '#444444'}, trigger:'focus'}	
+		
+	};
+	
+	var chart = new google.visualization.GeoChart(document.getElementById('visualization')); 
+	google.visualization.events.addListener(chart, 'select', function() {
+	 	var selection = chart.getSelection();
+	 	if (selection.length == 1) {
+	 		var selectedRow = selection[0].row;
+	 		var selectedRegion = data.getValue(selectedRow, 0);
+	 		if(ivalue[selectedRegion] != '') {
+	 			document.getElementsByTagName('body')[0].style.background=ivalue[selectedRegion]; 
+	 		}
+	 	}
+	});
+	chart.draw(data, options);
+}
+ </script>
+  <script type="text/javascript">
+
+   		 google.charts.load('current', {'packages':['corechart']});
+   		 google.charts.load('current', {'packages':['line']});
+   		
+     	 function drawSarahChart(v,year) {
+    		 v = eval(v);
+   
+	          
+	       // Create the data table for Sarah's pizza.
+	         var data = new google.visualization.DataTable();
+	          data.addColumn('string', '항만');
+	          data.addColumn('number', '물동량');
+	          data.addRows(v);
+
+	
+	        // Set options for Sarah's pie chart.
+	        var options = {title:year + '년 항만별 물동량 점유율',
+	                       width:600,
+	                       height:300};
+	
+	        // Instantiate and draw the chart for Sarah's pizza.
+	        var chart = new google.visualization.PieChart(document.getElementById('Sarah_chart_div'));
+	        chart.draw(data, options);
+     	 }
+     	function drawChart(w) {
+     		$(".w3-table").remove();
+     		$("#Sarah_chart_div").remove();
+     		
+      		 w = eval(w);
+     
+   	          
+   	       // Create the data table for Sarah's pizza.
+   	      var data = new google.visualization.DataTable();
+   	      data.addColumn('number', 'Year');
+   	      data.addColumn('number', '부산항');
+   	      data.addColumn('number', '인천항');
+   	      data.addColumn('number', '울산항');
+   	      data.addColumn('number', '대산항');
+   	      data.addColumn('number', '평택항');
+   	      data.addColumn('number', '포항영일만항');
+   	      data.addColumn('number', '광양항');
+   	      data.addColumn('number', '기타');
+   	      data.addColumn('number', '총 물동량');
+   	      data.addRows(w);
+   	
+   	        // Set options for Sarah's pie chart.
+   	        var options = {title:'chart2', subtitle: '항만별 연도별 물동량 그래프',
+   	                       width:600,
+   	                       height:500};
+   	
+   	        // Instantiate and draw the chart for Sarah's pizza.
+     		    var chart2 = new google.charts.Line(document.getElementById('linechart_material'));
+   	        chart2.draw(data, options);
+        }
+     	 
+     	
+
+     
+    </script>
+ <div id='visualization'></div>
+    </div><br>
+    <p>부산항, 인천항, 울산항, 대산항, 평택항, 포항 영일만항, 광양항</p>
+  </div>
+  <div class="w3-half w3-indigo w3-container" style="min-height:800px">
+    <div class="w3-padding-64 w3-center">
+      <h2>연도별 물동량</h2>
+      <p>(2013년~2017년 기준)</p>
+      <div class="w3-container w3-responsive">
+        <table class="w3-table">
+          <tr class="w3-white">
+            <td>2013</td>
+           	<td><button onclick="ajaxReq(1)" class="ajaxBtn1">조회하기</button></td>
+          </tr>
+          <tr>
+            <td>2014</td>
+            <td><button onclick="ajaxReq(2)" class="ajaxBtn2">조회하기</button></td>
+          </tr>
+          <tr class="w3-white">
+            <td>2015</td>
+          	<td><button onclick="ajaxReq(3)" class="ajaxBtn1">조회하기</button></td>
+          </tr>
+          <tr>
+            <td>2016</td>
+           	<td><button onclick="ajaxReq(4)" class="ajaxBtn2">조회하기</button></td>
+          </tr>
+          <tr class="w3-white">
+            <td>2017</td>
+           	<td><button onclick="ajaxReq(5)" class="ajaxBtn1">조회하기</button></td>
+          </tr>
+          <tr>
+            <td>년도별 변화</td>
+           	<td><button onclick="ajaxReq(6)" class="ajaxBtn2">조회하기</button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div id="Sarah_chart_div"></div>
+    <div id="linechart_material"></div>
+  </div>
+</div>
+
+<!-- Third Grid: Swing By & Contact -->
+<div class="w3-row" id="contact">
+  <div class="w3-half w3-dark-grey w3-container w3-center" style="height:700px">
+    <div class="w3-padding-64">
+      <h1>구현하지 못한 기능</h1>
+    </div>
+    <div class="w3-padding-30">
+    <table align = "center">
+     <tr>
+      <th><p>버블차트 안에 차트 넣기.</p>
+      <img alt="goal" src="image/goal1.jpg" height="350" >     
+     </tr>
+     </table>
+    </div>
+  </div>
+  <div class="w3-half w3-teal w3-container" style="height:700px">
+   	<div class="w3-padding-64">
+   	<h1 align="center">구현하지 못한 기능 2</h1>
+   	</div>
+   	<div class="w3-padding-30">
+    <table align = "center">
+     <tr>
+      <th><p>Geo차트에서 특정영역 선택시 차트 선택.</p>
+      <img alt="goal" src="image/goal2.jpg" height="350" >     
+     </tr>
+     </table>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-black w3-padding-16">
+  <p>Powered by <a href="http://www.multicampus.com/" target="_blank">윤기영, 김용진</a></p>
+</footer>
+<script>
+	function ajaxReq(data){
+		/* var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function(){
+			
+			if (this.readyState == 4 && this.status == 200){
+				drawSarahChart(this.responseText);
+			}
+			
+		};
+		xhttp.open("GET", "table1Res.jsp",true);
+		xhttp.send(); */
+		
+		switch(data) {
+		case 1:
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+				
+				if (this.readyState == 4 && this.status == 200){
+					drawSarahChart(this.responseText, 2013);
+					
+				}
+				
+			};
+			xhttp.open("GET", "table1Res.jsp",true);
+			xhttp.send(); 
+			break;
+		case 2:
+			var xhttp = new XMLHttpRequest();
+  			xhttp.onreadystatechange = function(){
+  				
+  				if (this.readyState == 4 && this.status == 200){
+  					drawSarahChart(this.responseText,2014);
+  				}
+  				
+  			};
+  			xhttp.open("GET", "table2Res.jsp",true);
+			xhttp.send();
+			break;
+		case 3:
+			var xhttp = new XMLHttpRequest();
+  			xhttp.onreadystatechange = function(){
+  				
+  				if (this.readyState == 4 && this.status == 200){
+  					drawSarahChart(this.responseText,2015);
+  				}
+  				
+  			};
+  			xhttp.open("GET", "table3Res.jsp",true);
+			xhttp.send();
+			break;
+		case 4:
+			var xhttp = new XMLHttpRequest();
+  			xhttp.onreadystatechange = function(){
+  				
+  				if (this.readyState == 4 && this.status == 200){
+  					drawSarahChart(this.responseText,2016);
+  				}
+  				
+  			};
+  			xhttp.open("GET", "table4Res.jsp",true);
+			xhttp.send();
+			break;
+		case 5:
+			var xhttp = new XMLHttpRequest();
+  			xhttp.onreadystatechange = function(){
+  				
+  				if (this.readyState == 4 && this.status == 200){
+  					drawSarahChart(this.responseText,2017);
+  				}
+  				
+  			};
+  			xhttp.open("GET", "table5Res.jsp",true);
+			xhttp.send();
+			break
+		case 6:
+			var xhttp = new XMLHttpRequest();
+  			xhttp.onreadystatechange = function(){
+  				
+  				if (this.readyState == 4 && this.status == 200){
+  					drawChart(this.responseText);
+  				}
+  				
+  			};
+  			xhttp.open("GET", "table6Res.jsp",true);
+			xhttp.send();
+			break
+		}
+		
+	} 
+</script>
+</body>
+</html>
