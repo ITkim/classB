@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* index.css */
+
+#content{ 
+	text-align:center; 
+	background-color:#ffffff; 	
+	padding-bottom:10px;
+	height:500px; 
+	line-height:500px;
+	}
+
+h1{
+	padding-top:20px;
+	color:white;
+	}
+	
+table {
+	width:960px;
+	}
+
+

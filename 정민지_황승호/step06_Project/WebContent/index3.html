@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<title>index.html</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="//d3js.org/d3.v4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600">
+<link rel="stylesheet" type="text/css" href="css/sequences.css"/>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Montserrat", sans-serif
+}
+
+.w3-row-padding img {
+	margin-bottom: 12px
+}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {
+	width: 120px;
+	background: #222;
+}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {
+	width:960px;
+	margin-left: 120px; 
+	background: #f7eee2;
+}
+#home{
+background:#f7eee2!important;
+}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {
+	#main {
+		margin-left: 0
+	}
+}
+</style>
+
+<body class="w3-black">
+
+	<!-- Icon Bar (Sidebar - hidden on small screens) -->
+	<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+		<!-- Avatar image in top left corner -->
+		<img src="images/배민아이콘.png" style="width: 100%"> <a href="#"
+			class="w3-bar-item w3-button w3-padding-large w3-black"> <i
+			class="fa fa-home w3-xxlarge"></i>
+			<p>HOME</p>
+		</a> <a href="#about"
+			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+			class="fa fa-user w3-xxlarge"></i>
+			<p>ABOUT</p>
+		</a> <a href="#photos"
+			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+			class="fa fa-eye w3-xxlarge"></i>
+			<p>CHART</p>
+		</a> 
+	</nav>
+
+	<!-- Navbar on small screens (Hidden on medium and large screens) -->
+	<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+		<div
+			class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+			<a href="#" class="w3-bar-item w3-button"
+				style="width: 25% !important">HOME</a> <a href="#about"
+				class="w3-bar-item w3-button" style="width: 25% !important">ABOUT</a>
+			<a href="#photos" class="w3-bar-item w3-button"
+				style="width: 25% !important">PHOTOS</a> <a href="#contact"
+				class="w3-bar-item w3-button" style="width: 25% !important">CONTACT</a>
+		</div>
+	</div>
+
+	<!-- Page Content -->
+	<div class="w3-padding-large" id="main">
+		<!-- Header/Home -->
+		<header class="w3-container w3-padding-32 w3-center w3-text-black"
+			id="home">
+			<h1 class="w2-jumbo" >
+				<span class="w3-hide-small">우리가 어떤 민족입니까</span>
+			</h1>
+			<p>6월 한달 어떤 음식을 가장 배달시켜 먹었나</p>
+			<img src="images/배달의민족.png" alt="boy" class="w3-image" width="992"
+				height="1108">
+				<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		</header>
+
+		<!-- About Section -->
+		<div class="w3-content w3-justify w3-text-grey w3-padding-64"
+			id="about">
+			<h2 class="w3-text-black">들어가기에 앞서</h2>
+			<hr style="width: 200px" class="w3-opacity">
+			<p>본 페이지는 SKT DATA HUB에서 얻은 2018년 6월의 배달 업종 이용 현황 분석 데이터를 활용했다<br>
+			요일별, 시간대별, 어떤 업종이 가장 배달 호황을 누렸는지 알아보자<br>
+			아침 시간 6~9시<br>
+			점심 시간 10~13시<br>
+			점저 시간 14~17시<br>
+			저녁시간 18~21시<br>
+			야식 시간 22~1시<br>
+			새벽 시간 2~5시 
+			</p>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			</div>
+			
+
+		<!-- Portfolio Section -->
+		<div class="w3-padding-64 w3-content" id="photos">
+			<h2 class="w3-text-black">6월 한달 배달 업소 이용 현황 차트</h2>
+			
+
+			<!-- Grid for photos -->
+			<div id="main">
+      <div id="sequence"></div>
+      <div id="chart">
+        <div id="explanation" style="visibility: hidden;">
+          <span id="percentage"></span><br/>
+          	서울시 6월 배달 현황
+        </div>
+      </div>
+    </div>
+    <div id="sidebar">
+      <input type="checkbox" id="togglelegend"> Legend<br/>
+      <div id="legend" style="visibility: hidden;"></div>
+    </div>
+    <script type="text/javascript" src="js/sequences.js"></script>
+    <script type="text/javascript">
+      // Hack to make this example display correctly in an iframe on bl.ocks.org
+      d3.select(self.frameElement).style("height", "700px");
+  </script>
+  </div>
+				<!-- End photo grid -->
+			<div>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			sdfadsf
+			</div>
+			<!-- End Portfolio Section -->
+		</div>
+		
+
+</body>
+</html>
