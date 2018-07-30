@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>byView.jsp</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<font color="blue">로그아웃 완료</font>
+	${requestScope.errorMsg}
 </body>
 </html>

@@ -160,12 +160,12 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       </div>
     </div>
   
-  
+  <button onclick='ajaxReqRegion()'>지도출력</button>
 
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 16px">
       <div class="w3-third">
-        <h5>세계지도</h5>
+        <h3>세계지도</h3>
         <!--  =======================   세계지도 표기========================      -->
        <div id="regions_div" style="width: 500px; height: 500px;"></div>   <!-- 지도 -->
          </div>
@@ -379,19 +379,12 @@ function w3_close() {
         // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
         'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
       });
-      google.charts.setOnLoadCallback(drawRegionsMap);
-
-      function drawRegionsMap() {
-        var data = google.visualization.arrayToDataTable([
-          ['Country', 'Popularity'],
-          ['Germany', 200],
-          ['United States', 300],
-          ['Brazil', 400],
-          ['Canada', 500],
-          ['France', 600],
-          ['RU', 700],
-          ['South Korea', 1000]
-        ]);
+      //google.charts.setOnLoadCallback(drawRegionsMap);
+		
+      function drawRegionsMap(data) {
+    	  data = eval(data);
+    	  alert(data);
+        var data = google.visualization.arrayToDataTable(data);
 
         var options = {};
 
@@ -399,6 +392,19 @@ function w3_close() {
 
         chart.draw(data, options);
       }
+    </script>
+        <script type="text/javascript">
+    function ajaxReqRegion(){
+		  var xhttp = new XMLHttpRequest();  //요청객체 생성
+		  xhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {  //status는 제공하는 속성이다.
+		    	drawRegionsMap(this.responseText);
+		    }
+		  };
+		            //            key
+		   xhttp.open("GET","Controller?command=region", true);
+		  xhttp.send();
+		}
     </script>
 </body>
 </html>
