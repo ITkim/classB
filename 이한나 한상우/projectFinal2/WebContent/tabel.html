@@ -1,0 +1,40 @@
+<html>
+<head>
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['table']});
+      google.charts.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', '행정구역');
+        data.addColumn('string', '주말유동량');
+        data.addColumn('string', '평일유동량');
+        data.addColumn('string', '6월 총 유동량');
+        data.addColumn('string', '카페수');
+        data.addColumn('string', '카페1개당 유동인구');
+       
+
+        
+        data.addRows([
+          ['압구정','15,630,657','19,549,259','35,179,916','134','262,537'],
+          ['역삼 1동','33,476,405','46,773,593','80,249,998','360','222,917'],
+          ['역삼 2동','14,350,468','18,780,916','33,131,385','76','435,939'],
+          ['서교동(홍대)','19,474,453','32,040,373','51,514,826','362','142,306'],
+          ['연남동','3,716,227','6,369,474','10,085,701','76','132,707']
+          
+          
+        ]);
+
+        var table = 
+        	new google.visualization.Table(document.getElementById('table_div'));
+
+        table.draw(data, {showRowNumber: true, width: '80%', height: '80%'});
+      }
+    </script>
+</head>
+<body>
+	<div id="table_div"></div>
+</body>
+</html>
