@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+   		 google.charts.load('current', {'packages':['corechart']});
+   		 google.charts.load('current', {'packages':['line']});
+   		
+     	 function drawSarahChart(v) {
+    		 v = eval(v);
+   
+	          
+	       // Create the data table for Sarah's pizza.
+	         var data = new google.visualization.DataTable();
+	          data.addColumn('string', '항만');
+	          data.addColumn('number', '물동량');
+	          data.addRows(v);
+
+	
+	        // Set options for Sarah's pie chart.
+	        var options = {title:'2014년 항만별 물동량 점유율',
+	                       width:400,
+	                       height:300};
+	
+	        // Instantiate and draw the chart for Sarah's pizza.
+	        var chart = new google.visualization.PieChart(document.getElementById('Sarah_chart_div'));
+	        chart.draw(data, options);
+      }
+     	 
+     	
+
+     
+    </script>
+  </head>
+  <body>
+  	<div id="Sarah_chart_div">
+  	<script type="text/javascript">
+  		function ajaxReq(){
+  			var xhttp = new XMLHttpRequest();
+  			xhttp.onreadystatechange = function(){
+  				
+  				if (this.readyState == 4 && this.status == 200){
+  					drawSarahChart(this.responseText);
+  				}
+  				
+  			};
+  			xhttp.open("GET", "table2Res.jsp",true);
+  			xhttp.send();
+  		}
+  		</script>
+  		</div>
+  		
+  	
+    <button onclick="ajaxReq()">조회하기</button>
+    
+    
+    <!--Table and divs that hold the pie charts-->
+    <table class="columns">
+      <tr>
+        <td><div id="Sarah_chart_div" style="border: 1px solid #ccc"></div></td>
+        
+      </tr>
+    </table>
+  </body>
+</html>

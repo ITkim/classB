@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+   		 google.charts.load('current', {'packages':['corechart']});
+   		 google.charts.load('current', {'packages':['line']});
+   		
+     	 
+     	 
+     	function drawChart(w) {
+   		 w = eval(w);
+  
+	          
+	       // Create the data table for Sarah's pizza.
+	      var data = new google.visualization.DataTable();
+	      data.addColumn('number', 'Year');
+	      data.addColumn('number', '부산항');
+	      data.addColumn('number', '인천항');
+	      data.addColumn('number', '울산항');
+	      data.addColumn('number', '대산항');
+	      data.addColumn('number', '평택항');
+	      data.addColumn('number', '포항영일만항');
+	      data.addColumn('number', '광양항');
+	      data.addColumn('number', '기타');
+	      data.addColumn('number', '총 물동량');
+	      data.addRows(w);
+	
+	        // Set options for Sarah's pie chart.
+	        var options = {title:'chart2', subtitle: '항만별 연도별 물동량 그래프',
+	                       width:500,
+	                       height:500,
+	                       backgroundColor: '#3f51b5'};
+	
+	        // Instantiate and draw the chart for Sarah's pizza.
+  		    var chart2 = new google.charts.Line(document.getElementById('linechart_material'));
+	        chart2.draw(data, options);
+	        chart2.draw(data, { backgroundColor: { fill: "#3f51b5" } })
+     }
+
+     
+    </script>
+  </head>
+  <body>
+  	
+  		
+  		<div id="linechart_material">
+  	  	<script type="text/javascript">
+  	  		function ajaxReq2(){
+  	  			var xhttp = new XMLHttpRequest();
+  	  			xhttp.onreadystatechange = function(){
+  	  				
+  	  				if (this.readyState == 4 && this.status == 200){
+  	  				drawChart(this.responseText);
+  	  				}
+  	  			};
+  	  			xhttp.open("GET", "table6Res.jsp",true);
+  	  			xhttp.send();
+  	  		}  	  		
+  	</script>
+  	</div>
+  	
+    
+    <button onclick="ajaxReq2()">조회하기</button>
+    
+    <!--Table and divs that hold the pie charts-->
+    <table class="columns">
+      <tr>
+        <td><div id="Sarah_chart_div" style="border: 1px solid #ccc"></div></td>
+        <td><div id="linechart_material" style="border: 1px solid #ccc"></div></td>
+      </tr>
+    </table>
+  </body>
+</html>

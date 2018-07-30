@@ -1,0 +1,66 @@
+<meta charset="UTF-8">
+<script type='text/javascript' src='http://www.google.com/jsapi'></script>
+<script type='text/javascript'>google.load('visualization', '1', {'packages': ['geochart']});
+google.setOnLoadCallback(drawVisualization);
+
+function drawVisualization() {
+	var data = new google.visualization.DataTable();
+
+	data.addColumn('string', 'Country');
+	data.addColumn('number', 'Value'); 
+	data.addColumn({type:'string', role:'tooltip'});var ivalue = new Array();
+	
+	
+	data.addRows([[{v:'KR-26', f:'부산항'},1,'상세차트 보기']]);
+	ivalue['KR-26'] = '#9ECAE1';
+	
+	data.addRows([[{v:'KR-28',f:'인천항'},5,'Click to change background color']]);
+	ivalue['KR-28'] = '#3182BD';
+	
+	data.addRows([[{v:'KR-31',f:'울산항'},6,'Click to change background color']]);
+	ivalue['KR-31'] = '#3182BD';	
+	
+	data.addRows([[{v:'KR-44',f:'대산항'},8,'Click to change background color']]);
+	ivalue['KR-44'] = '#3182BD';	
+
+	data.addRows([[{v:'KR-41',f:'평택항'},10,'Click to change background color']]);
+	ivalue['KR-41'] = '#9ECAE1';
+	
+	data.addRows([[{v:'KR-47',f:'포항 영일만항'},11,'Click to change background color']]);
+	ivalue['KR-47'] = '#9ECAE1';
+	
+	data.addRows([[{v:'KR-46',f:'광양항'},15,'Click to change background color']]);
+	ivalue['KR-46'] = '#9ECAE1';
+
+	var options = {
+		backgroundColor: {fill:'#FFFFFF',stroke:'#FFFFFF' ,strokeWidth:0 },
+		colorAxis:  {minValue: 0, maxValue: 21,  colors: ['#9ECAE1','#9ECAE1','#3182BD','#3182BD','#3182BD','#3182BD','#3182BD','#3182BD','#3182BD','#9ECAE1','#9ECAE1','#9ECAE1','#9ECAE1','#9ECAE1','#9ECAE1','#9ECAE1','#9ECAE1','#DEEBF7','#DEEBF7','#DEEBF7','#DEEBF7','#DEEBF7',]},
+		legend: 'none',	
+		backgroundColor: {fill:'#FFFFFF',stroke:'#FFFFFF' ,strokeWidth:0 },	
+		datalessRegionColor: '#f5f5f5',
+		displayMode: 'regions', 
+		enableRegionInteractivity: 'true', 
+		resolution: 'provinces',
+		sizeAxis: {minValue: 1, maxValue:1,minSize:10,  maxSize: 10},
+		region:'KR', //country code
+		keepAspectRatio: true,
+		width:600,
+		height:400,
+		tooltip: {textStyle: {color: '#444444'}, trigger:'focus'}	
+	};
+	
+	var chart = new google.visualization.GeoChart(document.getElementById('visualization')); 
+	google.visualization.events.addListener(chart, 'select', function() {
+	 	var selection = chart.getSelection();
+	 	if (selection.length == 1) {
+	 		var selectedRow = selection[0].row;
+	 		var selectedRegion = data.getValue(selectedRow, 0);
+	 		if(ivalue[selectedRegion] != '') {
+	 			document.getElementsByTagName('body')[0].style.background=ivalue[selectedRegion]; 
+	 		}
+	 	}
+	});
+	chart.draw(data, options);
+}
+ </script>
+ <div id='visualization'></div>
