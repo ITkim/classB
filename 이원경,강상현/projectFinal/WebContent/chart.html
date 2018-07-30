@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      google.charts.load('current', {'packages':['corechart']});
+     
+      
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart(data) {
+    	  
+		 data = eval(data);
+         var data = google.visualization.arrayToDataTable(data);
+
+        var options = {
+                       bar: { groupWidth: '50%' },
+                       isStacked: true
+                       };
+        var chart = new google.visualization.BarChart(document.getElementById('barchart_material'));
+        chart.draw(data, options);
+        
+      }
+    </script>
+  </head>
+
+  <body>
+  <div id="barchart_material" style="width: 1250px; height: 700px;"></div>
+    
+    <center>
+    <button type="button" onclick="ajaxReq1()"><img src="img/seoul.png" id="seoul"></button>
+    <button onclick="ajaxReq2()">공장 등록 현황(고용)</button>
+    <button onclick="ajaxReq3()">공장 등록 현황(규모)</button>
+    <button onclick="ajaxReq4()">공장 등록 현황(지역)</button></center><br>
+    <center>
+    <button type="button" onclick="javascript:location.href='index.html'"><img src="img/seoul.png" id="seoul"></button>
+    
+   
+    
+    <script type="text/javascript">
+		function ajaxReq1(){
+			var xhttp = new XMLHttpRequest();
+			
+			xhttp.onreadystatechange = function(){
+				if(this.readyState==4 & this.status==200){
+					drawChart(this.responseText)
+				}
+			};
+			xhttp.open("Get","chartRes1.jsp", true);
+			xhttp.send();
+			
+		}
+		function ajaxReq2(){
+			var xhttp = new XMLHttpRequest();
+			
+			xhttp.onreadystatechange = function(){
+				if(this.readyState==4 & this.status==200){
+					drawChart(this.responseText)
+				}
+			};
+			xhttp.open("Get","chartRes2.jsp", true);
+			xhttp.send();
+		}
+		function ajaxReq3(){
+			var xhttp = new XMLHttpRequest();
+			
+			xhttp.onreadystatechange = function(){
+				if(this.readyState==4 & this.status==200){
+					drawChart(this.responseText)
+				}
+			};
+			xhttp.open("Get","chartRes3.jsp", true);
+			xhttp.send();
+		}
+		function ajaxReq4(){
+			var xhttp = new XMLHttpRequest();
+			
+			xhttp.onreadystatechange = function(){
+				if(this.readyState==4 & this.status==200){
+					drawChart(this.responseText)
+				}
+			};
+			xhttp.open("Get","chartRes4.jsp", true);
+			xhttp.send();
+		}
+	</script>
+  </body>
+</html>
