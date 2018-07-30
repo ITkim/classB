@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Geochart.html</title>
+
+
+<script type='text/javascript' src='http://www.google.com/jsapi'></script>
+<script type='text/javascript'>google.load('visualization', '1', {'packages': ['geochart']});
+google.setOnLoadCallback(drawVisualization);
+
+function drawVisualization() {
+	var data = new google.visualization.DataTable();
+
+	data.addColumn('string', 'Country');
+	data.addColumn('number', 'Value'); 
+	data.addColumn({type:'string', role:'tooltip'});var ivalue = new Array();
+	
+	data.addRows([[{v:'KR-11', f:'Seoul Teugbyeolsi'},0,'매립량: 707.4, 소각량: 2184.9, 재활용: 2083.3, 총량: 4975']]);
+	ivalue['KR-11'] = '#3182BD';
+	
+	data.addRows([[{v:'KR-26', f:'Busan Gwang\'yeogsi'},1,'매립량: 268.3,   소각량:  439.5,   재활용: 1220.7,  총량:  1928']]);
+	ivalue['KR-26'] = '#3182BD';
+	
+	data.addRows([[{v:'KR-27',f:'Daegu Gwang\'yeogsi'},2,'매립량: 1176,    소각량:   356.5, 재활용: 526.4,   총량: 2058']]);
+	ivalue['KR-27'] = '#3182BD';
+	
+	data.addRows([[{v:'KR-30',f:'Daejeon Gwang\'yeogsi'},3,' 매립량: 240.5,  소각량:   225.7,   재활용:   280.4,총량:  746']]);
+	ivalue['KR-30'] = '#3182BD';
+	
+	data.addRows([[{v:'KR-29',f:'Gwangju Gwang\'yeogs'},4,'매립량: 208.5,   소각량:   238,   재활용:  462.7,    총량:  909']]);
+	ivalue['KR-29'] = '#3182BD';
+	
+	data.addRows([[{v:'KR-28',f:'Incheon Gwang\'yeogsi'},5,'매립량: 118.4,  소각량:    350,   재활용:   281.7,    총량:  750']]);
+	ivalue['KR-28'] = '#3182BD';
+	
+	data.addRows([[{v:'KR-31',f:'Ulsan Gwang\'yeogsi'},6,'매립량: 70.3,   소각량:  542.7,  재활용:   410.5, 총량:   1023.5']]);
+	ivalue['KR-31'] = '#3182BD';
+	
+	data.addRows([[{v:'KR-43',f:'Chungcheongbugdo'},7,'매립량: 221.4,  소각량:   500.9,    재활용:    758.4. 총량: 1480']]);
+	ivalue['KR-43'] = '#3182BD';
+	
+	data.addRows([[{v:'KR-44',f:'Chungcheongnamdo'},8,'매립량: 224.4,   소각량:    741.8,    재활용:   710.2, 총량:  1676']]);
+	ivalue['KR-44'] = '#3182BD';
+	
+	data.addRows([[{v:'KR-42',f:'Gang\'weondo'},9,'매립량: 546.1,    소각량:   434.6,   재활용:   370.7, 총량:  1351']]);
+	ivalue['KR-42'] = '#9ECAE1';
+	
+	data.addRows([[{v:'KR-41',f:'Gyeonggido'},10,'매립량: 706.2,    소각량:  3421.5,   재활용:  3206.8,  총량: 7334']]);
+	ivalue['KR-41'] = '#9ECAE1';
+	
+	data.addRows([[{v:'KR-47',f:'Gyeongsangbugdo'},11,'매립량: 703,  소각량:   634.3,  재활용:    754.7,  총량:   2092']]);
+	ivalue['KR-47'] = '#9ECAE1';
+	
+	data.addRows([[{v:'KR-48',f:'Gyeongsangnamdo'},12,'매립량: 537.3,    소각량:    1107.4,   재활용:  1077.4,총량:  2722']]);
+	ivalue['KR-48'] = '#9ECAE1';
+	
+	data.addRows([[{v:'KR-49',f:'Jejudo'},13,'매립량: 278.6,     소각량:   226.5,     재활용: 222.7,  총량: 727']]);
+	ivalue['KR-49'] = '#9ECAE1';
+	
+	data.addRows([[{v:'KR-45',f:'Jeonrabugdo'},14,'매립량: 329,    소각량:   350.8,   재활용:   844.8,  총량:  1524']]);
+	ivalue['KR-45'] = '#9ECAE1';
+	
+	data.addRows([[{v:'KR-46',f:'Jeonranamdo'},15,'매립량: 634.1,   소각량:  363,   재활용:   634.1, 총량: 1631']]);
+	ivalue['KR-46'] = '#9ECAE1';
+
+	var options = {
+		backgroundColor: {fill:'#FFFFFF',stroke:'#FFFFFF' ,strokeWidth:0 },
+		colorAxis:  {minValue: 0, maxValue: 21,  colors: ['#3182BD','#3182BD','#3182BD','#3182BD','#3182BD','#3182BD','#3182BD','#3182BD','#3182BD','#9ECAE1','#9ECAE1','#9ECAE1','#9ECAE1','#9ECAE1','#9ECAE1','#9ECAE1','#9ECAE1','#DEEBF7','#DEEBF7','#DEEBF7','#DEEBF7','#DEEBF7',]},
+		legend: 'none',	
+		backgroundColor: {fill:'#FFFFFF',stroke:'#FFFFFF' ,strokeWidth:0 },	
+		datalessRegionColor: '#f5f5f5',
+		displayMode: 'regions', 
+		enableRegionInteractivity: 'true', 
+		resolution: 'provinces',
+		sizeAxis: {minValue: 1, maxValue:1,minSize:10,  maxSize: 10},
+		region:'KR', //country code
+		keepAspectRatio: true,
+		width:600,
+		height:400,
+		tooltip: {textStyle: {color: '#444444'}, trigger:'focus'}	
+	};
+	
+	var chart = new google.visualization.GeoChart(document.getElementById('visualization')); 
+	google.visualization.events.addListener(chart, 'select', function() {
+	 	var selection = chart.getSelection();
+	 	if (selection.length == 1) {
+	 		var selectedRow = selection[0].row;
+	 		var selectedRegion = data.getValue(selectedRow, 0);
+	 		if(ivalue[selectedRegion] != '') {
+	 			document.getElementsByTagName('body')[0].style.background=ivalue[selectedRegion]; 
+	 		}
+	 	}
+	});
+	chart.draw(data, options);
+}
+ </script>
+ 
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ 
+  <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawSeriesChart);
+
+    function drawSeriesChart(data) {
+			data = eval(data);
+      var data1 = google.visualization.arrayToDataTable(data);
+	
+      var options = {
+        title: '전국 쓰레기 매립양' +
+               '쓰레기 소각양',
+        hAxis: {title: '매립양'},
+        vAxis: {title: '소각양'},
+        bubble: {textStyle: {fontSize: 11}}
+      };
+
+      var chart = new google.visualization.BubbleChart(document.getElementById('visualization'));
+      chart.draw(data1, options);
+    }
+    </script>
+
+ 
+  </head>
+  <body>
+    <div id='visualization'></div>
+    <div id="series_chart_div" style="width: 900px; height: 500px;"></div>
+    <br><hr><br>
+    <button onclick = "ajaxReq()"> 지역별 현황 </button>
+    
+    <script type = "text/javascript">
+	function ajaxReq() {
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function ajaxReq(){
+			if(this.readyState == 4 && this.status == 200){
+				drawSeriesChart(this.responseText);
+			}
+		};
+			xhttp.open("GET", "BubbleMenu1.jsp", true); // 비동기 true
+			//실제 서버에 요청 
+			xhttp.send();
+		}
+	
+	</script>
+    
+  
+</body>
+</html>
