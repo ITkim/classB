@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		function ajaxReq(tableNum){
+			 var xhttp = new XMLHttpRequest();
+			  xhttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) {
+			    	//innerHTML - js에서 html tag를 화면에 출력할 때 사용되는 속성
+			    	//주의사항 : div와 p tag에 반영되는 속성
+			    	//innerText는 tag반영 안됨
+			     	document.getElementById("dataView").innerHTML = this.responseText;
+			    }
+			  };
+			  
+			  var executeString;
+			  if(tableNum == 1) executeString = "cont?command=crime";
+			  else if(tableNum == 2) executeString = "cont?command=crimeTime";
+			  else if(tableNum == 3) executeString = "cont?command=crimeDay";
+			  else executeString = "cont?command=fail";
+			  
+			  xhttp.open("GET", executeString, true);
+			  xhttp.send();
+		}
+		
+	</script>
+	
+	<div id="dataView"></div>
+	
+	<br><br><hr><br><br>
+	
+	<button onclick="ajaxReq(1)">CrimeTable</button><br><br>
+	<button onclick="ajaxReq(2)">CrimeTimeTable</button><br><br>
+	<button onclick="ajaxReq(3)">CrimeDayTable</button>
+</body>
+</html>
