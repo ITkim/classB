@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="Utf-8">
+  
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['line']});
+      //google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart(v) {
+    	 	
+		data = eval(v);
+		//alert(data);
+	 var data = new google.visualization.DataTable();
+      data.addColumn('number', '월');
+      data.addColumn('number', '대형
+    		  마트');
+      data.addColumn('number', '백화점');
+      
+		v =   [  
+	        [1,  1572.0, 2263.0],
+	        [2,  1509.0, 3166.0],
+	        [3,  1637.0, 2755.0],
+	        [4, 1767.0, 3166.0],
+	        [5,  1501.0, 2733.0],
+	        [6,  1470.0, 2016.0],
+	        [7,  1613.0, 2243.0]
+	];
+     
+
+      data.addRows(v);
+
+      var options = {
+        chart: {
+          title: 'Market Price Changes per Month',
+          subtitle: 'APPLE'
+        },
+        width: 750,
+        height: 400,
+        axes: {
+          x: {
+            0: {side: 'top'}
+          }
+        }
+      };
+      var chart = new google.charts.Line(document.getElementById('line_top_x'));
+
+      chart.draw(data, google.charts.Line.convertOptions(options)); 
+      }
+      
+      function drawChart2(e) {
+  	 	
+  		data = eval(e);
+  		//alert(data);
+  	 var data = new google.visualization.DataTable();
+        data.addColumn('number', '월');
+        data.addColumn('number', '대형마트');
+        data.addColumn('number', '백화점');
+        
+  		e =   [  
+  			 [1,  30280, 41550],
+ 	        [2,  28904, 40540],
+ 	        [3,  32796, 40575],
+ 	        [4, 38404, 37560],
+ 	        [5,  38400, 39810],
+ 	        [6,  40450, 38775],
+ 	        [7,  34360, 40725]
+  	];
+       
+
+        data.addRows(e);
+
+        var options = {
+          chart: {
+            title: 'Market Price Changes per Month',
+            subtitle: 'BEEF'
+          },
+          width: 750,
+          height: 400,
+          axes: {
+            x: {
+              0: {side: 'top'}
+            }
+          }
+        };
+
+      var chart = new google.charts.Line(document.getElementById('line_top_x'));
+
+      chart.draw(data, google.charts.Line.convertOptions(options)); 
+      }
+      
+      function drawChart3(r) {
+    	 	
+    		data = eval(r);
+    		//alert(data);
+    	 var data = new google.visualization.DataTable();
+          data.addColumn('number', '월');
+          data.addColumn('number', '대형마트');
+          data.addColumn('number', '백화점');
+          
+    		r =   [
+    			[1, 5268, 7700],
+    			[2, 2603, 6595],
+    			[3, 4210, 5983],
+    			[4, 2898, 8285],
+    			[5, 4628, 7583],
+    			[6, 4770, 7100],
+    			[7, 2900, 10585]      
+    			];
+         
+
+          data.addRows(r);
+
+          var options = {
+            chart: {
+              title: 'Market Price Changes per Month',
+              subtitle: 'FISH'
+            },
+            width: 750,
+            height: 400,
+            axes: {
+              x: {
+                0: {side: 'top'}
+              }
+            }
+          };
+
+        var chart = new google.charts.Line(document.getElementById('line_top_x'));
+
+        chart.draw(data, google.charts.Line.convertOptions(options)); 
+        }
+      
+      function drawChart4(t) {
+    	 	
+    		data = eval(t);
+    		//alert(data);
+    	 var data = new google.visualization.DataTable();
+          data.addColumn('number', '월');
+          data.addColumn('number', '대형마트');
+          data.addColumn('number', '백화점');
+          
+    		t =   [
+    			[1, 3630, 4454],
+    			[2, 3327, 4552],
+    			[3, 3249, 4952],
+    			[4, 2042, 3810],
+    			[5, 3305, 5143],
+    			[6, 2530, 4490],
+    			[7, 2830, 4768]
+    			];
+         
+
+          data.addRows(t);
+
+          var options = {
+            chart: {
+              title: 'Market Price Changes per Month',
+              subtitle: 'CABBAGE'
+            },
+            width: 750,
+            height: 400,
+            axes: {
+              x: {
+                0: {side: 'top'}
+              }
+            }
+          };
+
+        var chart = new google.charts.Line(document.getElementById('line_top_x'));
+
+        chart.draw(data, google.charts.Line.convertOptions(options)); 
+        }
+  </script>
+</head>
+<body>
+  <div id="line_top_x"></div>
+  
+  <br><hr><br>
+  
+  	
+	    	<button onclick="ajaxReq()"><img src="images/apple.png"></button>&nbsp&nbsp&nbsp&nbsp
+	    	<button onclick="ajaxReq2()"><img src="images/meat.png"></button>&nbsp&nbsp&nbsp&nbsp
+	    	<button onclick="ajaxReq3()"><img src="images/fish.png"></button>&nbsp&nbsp&nbsp&nbsp
+	    	<button onclick="ajaxReq4()"><img src="images/cabbage.png"></button>&nbsp&nbsp&nbsp&nbsp
+	   
+    
+    <script type="text/javascript">
+		function ajaxReq(v){
+				  var xhttp = new XMLHttpRequest();
+				  xhttp.onreadystatechange = function() {
+				    if (this.readyState == 4 && this.status == 200) {
+				    	drawChart(this.responseText);
+				    }
+				  };
+				  xhttp.open("GET", "chart2LineRes.jsp?fruit=" + encodeURIComponent(v), true);
+				  xhttp.send();
+		}
+		
+		function ajaxReq2(e){
+			  var xhttp = new XMLHttpRequest();
+			  xhttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) {
+			    	drawChart2(this.responseText);
+			    }
+			  };
+			  xhttp.open("GET", "chart3LineRes.jsp?beef=" + encodeURIComponent(e), true);
+			  xhttp.send();
+	}
+		
+		function ajaxReq3(r){
+			  var xhttp = new XMLHttpRequest();
+			  xhttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) {
+			    	drawChart3(this.responseText);
+			    }
+			  };
+			  xhttp.open("GET", "chart3LineRes.jsp?fish=" + encodeURIComponent(r), true);
+			  xhttp.send();
+	}
+		
+		function ajaxReq4(t){
+			  var xhttp = new XMLHttpRequest();
+			  xhttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) {
+			    	drawChart4(this.responseText);
+			    }
+			  };
+			  xhttp.open("GET", "chart3LineRes.jsp?cabbage=" + encodeURIComponent(t), true);
+			  xhttp.send();
+	}
+	</script>
+</body>
+</html>
