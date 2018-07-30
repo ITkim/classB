@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* slideShow.css  */
+
+#slideShow {
+	position:relative;
+	background-color:#ffffff;
+	margin-top:10px;
+	height:520px;
+	line-height:520px;
+}	
+
+#slideShowBox  {
+	margin:0 auto;
+    overflow:hidden;         
+    width:960px; 
+	height:480px;
+	background-color:blue;
+   }
+   
+ #slidePanel{
+ 	position:relative;
+ 	width:4800px;
+ 	height:480;
+ 	background-color:yellow;
+ }
+ 
+ .slideImage{
+ 	float:left;
+ 	width:960px;
+ 	height:480px;
+ }
+ 
+ #prevNextButtonBox{position:relative;}
+ #prevButton{position:absolute;top:212px;left:-80px; width:60px;}
+ #nextButton{position:absolute;top:212px;left:985px;width:60px;}
+ 
+ 
+ #controlPanel{
+ 	position:absolute;
+ 	top:10px;
+ }
+ 
+ .controlButton{
+ 	position:relative;
+ 	top:230px;
+ 	left:420px;
+ 	height:5px;
+ 	width:5px;
+ 	display:inline-block;
+ 	padding: 8px;
+ }
