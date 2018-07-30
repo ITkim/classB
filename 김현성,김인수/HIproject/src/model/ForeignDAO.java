@@ -45,34 +45,6 @@ public class ForeignDAO {
 		return all;
 	}
 	
-	public static ArrayList<ForeignDTO> total() throws Exception {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		ArrayList<ForeignDTO> total = null;
-		try {
-			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("select * from foreigner where national='총계' and gender ='T'");
-			rset = pstmt.executeQuery();
-			
-			total = new ArrayList<>();
-		
-			while(rset.next()) {
-				total.add(new ForeignDTO(rset.getString(1), rset.getString(2), rset.getString(3),
-						rset.getString(4), rset.getString(5), rset.getString(6),
-						rset.getString(7), rset.getString(8), rset.getString(9),
-						rset.getString(10), rset.getString(11), rset.getString(12),
-						rset.getString(13), rset.getString(14), rset.getString(15),
-						rset.getString(16)
-						));
-			}
-		}finally {
-			DBUtil.close(con, pstmt, rset);
-		}
-		return total;
-	}
-	
 	
 	public static String selectNational(int national) throws Exception {
 		Connection con = null;
@@ -82,7 +54,6 @@ public class ForeignDAO {
 		//ArrayList<String> all = null;
 		//String all = "";
 		String text = "";
-		
 		
 		try {
 			con = DBUtil.getConnection();
@@ -126,44 +97,85 @@ public class ForeignDAO {
 		return text;
 	}
 	
-	/* 로그인 체크 로직
-	 * 1. 반환 - 로그인 성공인 경우 검색된 이름을 반환
-	 * 2. 고려해야할 상황
-	 * 		경우의 수 1 - 정상 실행
-	 * 			- 존재할 경우 = String이름 값 반환
-	 * 			- 미존재할 경우 = null값 반환
-	 * 		경우의 수 2 - 비정상 실행
-	 * 			- 예외 발생 	 */
+
+public static String selectCount(String national) throws Exception {
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rset = null;
 	
-	public static boolean update(String id, String newName) throws Exception {
-		Connection con = null;
-		PreparedStatement pstmt = null;
+	//ArrayList<String> all = null;
+	//String all = "";
+	String text = "";
+	
+	try {
+		con = DBUtil.getConnection();
 		
-		boolean result = false;
+		pstmt = con.prepareStatement("select national, gend_total from foreigner where national='" + national + "'");
+//				//+ "or '몽골' or '홍콩' or '필리핀' or '타이' or '일본'");
+//		
+//		switch(national) {
+//		case 1: pstmt.setString(1, "미국"); break;
+//		case 2: pstmt.setString(1, "몽골"); break;
+//		case 3: pstmt.setString(1, "홍콩"); break;
+//		case 4: pstmt.setString(1, "필리핀"); break;
+//		default: break;
+//		
+//		}
+		//pstmt.setString(1, "'" + national + "'");
+		rset = pstmt.executeQuery();
+//		int totalUSA = 0;
+//		int totalMongol = 0;
+//		int totalHongkong = 0;
+//		int totalPhilipine = 0;
+//		int totalThai = 0;
+//		int totalJapan = 0;
+		int total = 0;
 		
-		try {
-			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("update customer set name=? where id=?");
-			
-			pstmt.setString(1, newName);
-			pstmt.setString(2, id);
-			
-			int r = pstmt.executeUpdate();//insert.update.delete 실행
-			
-			if(r != 0) {
-				result = true;
-			}
-		}finally {
-			DBUtil.close(con, pstmt);
+		while(rset.next()) {
+			total += Integer.parseInt(rset.getString(2).replaceAll(",", ""));
+//			totalUSA += Integer.parseInt(rset.getString(2).replaceAll(",", ""));
+//			totalMongol += Integer.parseInt(rset.getString(2).replaceAll(",", ""));
+//			totalHongkong += Integer.parseInt(rset.getString(2).replaceAll(",", ""));
+//			totalPhilipine += Integer.parseInt(rset.getString(2).replaceAll(",", ""));
+//			totalThai += Integer.parseInt(rset.getString(2).replaceAll(",", ""));
+//			totalJapan += Integer.parseInt(rset.getString(2).replaceAll(",", ""));
 		}
-		return result;
+		text = "['" + national + "'," + total + "]";
+		
+	}finally {
+		DBUtil.close(con, pstmt, rset);
 	}
-	
+	return text;
 }
 
-
-
-
+public static ArrayList<ForeignDTO> total() throws Exception {
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rset = null;
+	
+	ArrayList<ForeignDTO> total = null;
+	try {
+		con = DBUtil.getConnection();
+		pstmt = con.prepareStatement("select * from foreigner where national='총계' and gender ='T'");
+		rset = pstmt.executeQuery();
+		
+		total = new ArrayList<>();
+	
+		while(rset.next()) {
+			total.add(new ForeignDTO(rset.getString(1), rset.getString(2), rset.getString(3),
+					rset.getString(4), rset.getString(5), rset.getString(6),
+					rset.getString(7), rset.getString(8), rset.getString(9),
+					rset.getString(10), rset.getString(11), rset.getString(12),
+					rset.getString(13), rset.getString(14), rset.getString(15),
+					rset.getString(16)
+					));
+		}
+	}finally {
+		DBUtil.close(con, pstmt, rset);
+	}
+	return total;
+}
+}
 
 
 
