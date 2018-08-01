@@ -15,8 +15,6 @@ div {
     background-color: #f0f2f5;
     border-left: 5px solid #b8d9f3;
 }
-
-
 </style>
 </head>
 <body>
@@ -31,7 +29,10 @@ div {
   리눅스는 다중 사용자 시스템<br><br>
 
   한 대의 리눅스에 여러명이 동시에 접속해서 사용할 수 있는 시스템<br>
-  기본적으로 root라는 이름을 가진 슈퍼 유저가 있으며 시스템의 모든 작업을 실행 할 수 있는 권한이 있음<br>
+  기본적으로 root라는 이름을 가진
+  슈퍼 유저가 있으며 시스템의 모든
+  작업을 실행 할 수 있는 권한이 있음<br>
+
   다중 사용자 시스템인 리눅스에서 사용자를 관리하는 방법 학습<br><br>
   <hr>
 
@@ -62,6 +63,7 @@ div {
 
   [2] 새로운 사용자 <br>
   - 사용자를 생성 할 수 있고, 사용자들을 그룹으로 관리 할수 있음<br><br>
+  - 사용자 계정 생성은 root만 가능<br>
 
 <div class="info">
   2-1. 사용자 추가<br>
@@ -96,7 +98,10 @@ div {
 
 </div>
 
-<h3>2. 파일과 디렉터리의 소유와 허가권</h3><p>
+<h3><font color="red">
+    2. 파일과 디렉터리의 소유와 허가권
+  </font>
+</h3><p>
   * 자세한 파일 리스트<br>
 <img src="자세한파일리스트.PNG"><br>
 
@@ -130,20 +135,53 @@ div {
 - 파일의 소유권을 변경하는 명령어 : chown<br><br>
 
 1-3-1. 소유권 변경 명령어<br>
-#chwon 소유권보유사용자 파일명<br>
-#chwon centos test<br><br>
+#chown 소유권보유사용자 파일명 or 폴더명<br>
+#chown centos test<br><br>
 
 1-3-2. 현재 사용자 확인 명령어<br>
 #whoami<br><br>
 
 1-3.3. 디렉터로 속성 확인<br>
 #ls -l<br>
-
-
-
 </div>
+<br><br>
 
+<div class="info">
+  1. 문제 : master라는 새로운 사용자 생성 해서 centos라는 일반 user가
+            생성한 "김현성.txt" 파일의 내용을 수정해라<br><br>
 
+  2. 해결책:<br>
+    2-1. 1단계 : root 계정으로 master 계정 생성<br>
+    # useradd master<br>
 
+    2-2. 2단계 : 생성된 master 계정에 비밀번호 생성<br>
+    # passwd master<br>
+    passwd 입력창<br>
+
+    2-3. 3단계 : master 계정의 권한을 centos 계정과 동일한 그룹으로 변환<br>
+      2-3-1. centos의 그룹을 먼저 확인<br>
+        #groups centos<br>
+        $groups centos<br>
+
+      2-3-2. 확인한 centos 계정이 속한 그룹과 동일한 그룹명으로 변경<br>
+        #usermod -g centos master<br>
+
+      2-3-3. master 계정의 그룹 확인<br>
+        #groups master<br>
+        $groups master<br>
+
+    2-4. 4단계 : centos의 /home/centos 폴더에 접속 허가권을 master에게 부여<br>
+        #chown master /home/centos<br>
+
+    2-5. 5단계 : master 로 로그인 후 centos 계정의 /home/centos 경로
+                하위의 파일 수정<br>
+      2-5-1. centos의 폴더의 내용 검색<br>
+        $ls -l /home/centos <br>
+      2-5-2. 파일 수정 시도<br>
+        $vi /home/centos/김현성.txt <br>
+        파일 수정 <br>
+      2-5-3. 수정 파일 확인<br>
+        centos 와 master 계정 두개로 확인<br>
+</div>
 </body>
 </html>
