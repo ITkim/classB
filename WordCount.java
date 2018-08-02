@@ -55,3 +55,4 @@ public class WordCount extends Configured implements Tool {
             context.write(key, new LongWritable(cnt));
         }
     }
+}
