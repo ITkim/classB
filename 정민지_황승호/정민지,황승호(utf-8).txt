@@ -25,3 +25,5 @@ sample3는 num int thing1 string thing2 string 형식으로 생성
 2. external table 만 존재하는 폴더에 external이 아닌 table을 생성해서
 	table을 드롭시킬 경우 모든 데이터가 증발하여 드롭하지 않은 테이블은
 	존재는 하지만 데이터는 사라진다.
+
+재직자라면 테이블 생성을 대부분 external방식으로 해야 할 것 같다.
