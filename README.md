@@ -12,3 +12,25 @@ sudo yum localinstall git-*.rpm perl-Git-*.noarch.rpm -y <br>
 #yum update -y nss curl libcurl
 
 
+---------------------<br>
+
+3. hive 연동을 위한 추가 설정<br>
+ <dependencies>
+  	<dependency>
+  		<groupId>org.apache.hive</groupId>
+  		<artifactId>hive-jdbc</artifactId>
+  		<version>1.1.0</version>
+  	</dependency>  	
+  		<dependency>
+  		<groupId>org.apache.hadoop</groupId>
+  		<artifactId>hadoop-common</artifactId>
+  		<version>2.6.0</version>
+  		<exclusions>
+	        <exclusion>
+	            <artifactId>jdk.tools</artifactId>
+	            <groupId>jdk.tools</groupId>
+	        </exclusion>
+    	</exclusions>
+  	</dependency>
+
+  </dependencies>

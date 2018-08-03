@@ -36,6 +36,10 @@ BUT drop table test4을 했을 때 select * from test4의 결과는 test4를 찾을 수 없다
 external 안했을 때 하나만 지웠을 경우에는 내용이 둘 다 사라짐. 
 
 
+6. vi text5.txt를 먼저 만들고 테이블을 생성해 정보를 넣거나, 테이블을 먼저 만들고 text5.txt를 만드나 결과는 같다.
+
+
+
 이상입니다. 감사합니다 ^^ 
  
 
