@@ -1,0 +1,27 @@
+﻿1. sample.csv와 sample2.csv sample3.csv 를 생성
+sample과 sample2는 name string age int로 동일한 형식, 다른 내용으로 생성
+sample3는 num int thing1 string thing2 string 형식으로 생성
+
+가설 -  1.table 형식에 따라 알아서 맞는 테이블에 데이터가 입력이 될지
+	2. 형식이 동일하다면 sample 과 sample2가 충돌이 일어날지 같이 입력이 될지
+
+테이블을 person, person2를 name string, age int로 external 생성
+	group 테이블을 num int, thing1 string, thing2 string으로 external로 생성
+
+결과 - 모든 데이터가 모든 테이블에 입력됨. 하지만 테이블 형식에 따라
+	 데이터 출력도 다르게 됨
+	
+	(person1/2 테이블에는 sample1,sample2.csv는 그대로 출력,
+	하지만 sample3.csv는 num int는 string으로 변환되어 출력,
+	thing1은 string이지만 테이블은 int 값이여서 입력이 되지않고 null으로 출력)
+
+	(group 테이블에는 sample1/sample2.csv 가 null/숫자값/null로 출력
+	sample1/2의 데이터가 string, int이기 때문에 group테이블의 첫번째
+	컬럼에는 string이 int로 변환될수 없어 null로 출력, 두번째 컬럼에는
+	int가 string으로 변환되어 출력, 세번째 컬럼에는 값이 없어 null로 출력.
+	
+	sample3.csv 는 제대로 출력)
+
+2. external table 만 존재하는 폴더에 external이 아닌 table을 생성해서
+	table을 드롭시킬 경우 모든 데이터가 증발하여 드롭하지 않은 테이블은
+	존재는 하지만 데이터는 사라진다.
