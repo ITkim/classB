@@ -27,3 +27,5 @@ sample3는 num int thing1 string thing2 string 형식으로 생성
 	존재는 하지만 데이터는 사라진다.
 
 재직자라면 테이블 생성을 대부분 external방식으로 해야 할 것 같다.
+
+.
