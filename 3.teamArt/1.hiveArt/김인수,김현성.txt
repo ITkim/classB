@@ -1,0 +1,12 @@
+1. 리눅스에서 파일 생성
+2. 생성한 파일을 하둡으로 put
+3. warehouse 디렉토리에 3개의 텍스트파일(",", "\t", "$" 3개의 구분자) 생성
+4. 각 파일에 해당하는 테이블 만들기 시도(try) => 실패
+5. 각 파일을 각각의 디렉토리로 나누어 저장 후 다시 table 생성 시도 => 성공
+
+#1
+hive> create external table person1(name string, age int) row format delimited fields terminated by ',' stored as textfile location '/user/hive/warehouse1';
+#2
+hive> create external table person2(name string, age string) row format delimited fields terminated by '\t' stored as textfile location '/user/hive/warehouse2';
+#3
+hive> create external table person3(name string, age string) row format delimited fields terminated by '$' stored as textfile location '/user/hive/warehouse3';

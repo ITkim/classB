@@ -1,0 +1,45 @@
+
+	1. warehouse 안에 파일이 1개만 있으면
+	   drop 명령어를 입력하면 table과 파일이 같이 사라지는데,
+	   warehouse 안에 파일이 2개 이상 있을 때에도
+	   drop 명령어를 입력하면 table과 파일이 같이 사라질까?
+	   
+	   => 그러하다. 똑같이 날아간다.
+	      근데 파일 2개로 테이블 1개가 만들어졌고,
+		  테이블을 날리자, 파일 2개가 없어졌고, 그 파일이 들어있던 경로도 없어졌다.
+		 
+		
+		 
+	cf) step을 해가는 과정 중에, 예를 들어,
+		[cloudera@quickstart ~]$ vi sample.csv
+		신동엽,20
+		이영자,30
+		정찬우,40
+		[cloudera@quickstart ~]$ hdfs dfs -put sample.csv /user/hive/warehouse    
+		 여기서 warehouse 뒤에 [/] 없이 엔터를 치면,
+		 hive라는 경로에 warehouse라는 이름의 파일이 생성되며, 그 파일의 내용은 sample.scv의 내용이 들어가게 된다.
+		 
+		[cloudera@quickstart ~]$ hdfs dfs -put sample.csv /user/hive/warehouse/
+		 이렇게 실행을 해야 하둡의 warehouse 라는 경로 안에 sample.csv 라는 파일이 들어간다!
+		 
+		 
+		 
+	2. csv, txt, xlxs, tsv 다 될까?
+	  => 엑셀파일을 불러오기 위해서는 어떤 library가 필요한 것 같다(구글링 결과)
+	     csv, tsv 다 된다.
+		 txt도 되는데 구분자[콤마(,)인지 탭(\t)인지]가 무엇인지가 중요한 것 같다
+		 
+		 
+		 
+	3. 초기화하는 법 (garbage 없애기)
+		why? 삽질하고 여러가지 trial이 있었는데 디렉토리, 파일... 너무 지저분하다 어떡하지?
+	  => 1. 이것은 버츄어 박스에서 시냅스(시점에서의 상태를 저장)를 설정해 놓으면 그 시점의 상태로 돌아가는 것은 가능
+		 2. 시스템을 디폴트 값으로 되돌리는? 설정하는? 명령어가 있어 그럼 초기화 돼
+		 3. 마지막으로 버츄어 박스에 있는 걸 전부 다 밀고 다시 까는 방법 있어
+		 
+		 
+		 
+	4. warehouse 디렉토리 안에 [파일1.scv] 와 [파일2.scv] 파일을 넣고
+	   각각을 표시하게 하려고 함
+	  => 파티션을 사용해야 하는데, [join] 과 [union]을 활용해봤지만, 실행이 되지 않고 오류가 발생
+		 그리고 [,]를 사용해서 from에 테이블 2개를 각각 입력하였으나, 중복으로 테이블이 만들어지는 오류가 발생
