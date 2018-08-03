@@ -1,0 +1,96 @@
+1. 수업 진행 내용
+	java
+	SQL
+	Web
+		- Servlet & JSP : server단 처리 언어
+		- HTML/CSS/Java Script : client단 처리 언어
+		
+	시각화
+		- 구글차트
+		- d3(*)
+		
+	리눅스 명령어
+		- 하둡이라는 프로그램 사용을 위한 기초 명령어
+	하둡
+		- 대용량 데이터, 반정형 데이터등을 저장할 수 있는 오픈 소스
+		- 무료로 사용, 수정 가능
+		
+	파이썬
+		- 데이터 분석 모듈
+		- 크롤링
+	R
+		- 데이터 시각화
+	
+		
+	Project
+		*
+		1. 분석한 데이터를 end user 서비스
+		
+		2. end user
+			- 관리자(*)
+				- 웹 page기반으로 확인 
+				- 서버등의 설정 정보 확인...
+			- 최종 사용자
+				- 웹 page로만 서비스 받음
+		
+		
+2. 개발 환경
+	1. java 언어
+		- JDK : 개발 및 실행 환경
+	2. Eclipse 
+		- 자동완성 기능등 유용한 기능 제공
+		통합 개발 tool
+		- 확장성 좋음
+		- 버전업이 될수록..신뢰도는 다운
+	3. Oracle DB
+		- 교육용DB : oracle xe
+		- RDBMS
+			- 장점 
+				pk - 중복 데이터 불허
+				....
+				자체 함수 지원
+				...
+				안정적인 데이터 관리가 좋음
+				다중 사용자가 동시 접속이 가능
+				동시에 동일한 데이터 수정 시도에 대한 
+				관리도 잘 해줌 
+		- Sql
+			- sql developer tool
+			- oracle
+			
+		- 참고
+			IBM - DB2
+			MS - Ms SQL
+			Oracle - Oracle & Mysql 
+			MariaDB - mysql 개발자들이 따로 만듬
+			큐브리드 - 국산
+			..
+
+	4. WAS[Web Application Server, 와스]
+		- server, web container, web servlet engine
+	5. linux
+		- 무료
+		- 안정적인 운영체제(os)
+		- server 시스템으로 사용 
+		- 기본적인 명령어는 상식
+	6. 하둡
+		- 리눅스 os에 설치
+		- git도 활용 예정
+		
+
+
+
+
+
+
+
+
+
+		
+		
+		
+		
+		
+		
+		
+	
