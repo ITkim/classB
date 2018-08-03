@@ -1,0 +1,25 @@
+1. 
+	user/hive/ 아래에 classB 디렉토리 생성
+	friends.csv (이름, 성, 나이, 키, 영어이름 총 5개의 컬럼)파일을 만들고
+	hdfs dfs -put을 사용하여 hive에 옮김
+	duplicate session으로 새로운 도스창 연 후, hive>접속
+	hive에서 person이라는 테이블을 만들어서 데이터 저장.
+		create table person(name string, gender string, age int, height int, englishname string)row format delimited fields terminated by ',' stored as textfile location '/user/hive/classB';
+   	select문으로 내용 확인.
+   	삭제 시도.
+	cloudera에서 classB가 삭제되었음을 확인
+
+	같은 과정을 external로 table생성하여 반복
+		create external table person(name string, gender string, age int, height int, englishname string)row format delimited fields terminated by ',' stored as textfile location '/user/hive/classB';
+	classB가 영향받지 않음을 확인
+
+2.
+	friends.csv 데이터를 이름, 성, 나이 3개의 컬럼과, 키, 영어이름 2개의 컬럼을 갖는 2개의 테이블로 쪼개서 저장하려는 시도를 했으니 실패(failed)
+
+3.
+	같은 형식의 데이터(컬럼)를 갖는 friends.csv와 friends2.csv를 생성
+	hdfs dfs -put 으로 /user/hive/classB에 전달
+	hive에서 create external로 person이라는 테이블을 생성
+	그 결과 friends.csv와 friends2.csv의 데이터가 모두 person이라는 테이블에 합쳐져서 입력됨
+	
+	
