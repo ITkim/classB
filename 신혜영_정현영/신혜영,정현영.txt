@@ -1,0 +1,39 @@
+Case Study - 신혜영 & 정현영
+
+*linux 명령어 정리
+
+mkdir -> 폴더 만들기
+vi -> 편집기 열기
+echo -> 간단한 파일 만들기
+
+1. 하둡에 데이터 저장 (파일이 있는 폴더로 이동)
+ 
+hdfs dfs -put 파일 폴더
+
+2. hive로 이동 (hive명령어로 이동)
+
+create table(name string, age int) row format delimited fields terminated by '구분자' stored as textfile location '폴더위치'; 
+create table(name string, age int) row format delimited fields terminated by ',' stored as textfile location '/user/hive/warehouse';
+
+show tables : table 확인하기
+select * from table명; :table 전체 내용 확인하기
+quit; : hive종료
+
+*구분자 : csv -> ',' tab -> '\t'
+
+1. 한 폴더 내에 포맷이 다른 파일들이 있을 때
+	1. 구분자가 다른 경우
+		-> csv와 txt파일이 있을 때 구분자를 ','한 table 생성 시 txt파일 내용의 한 줄이 하나의 데이터로 인식
+	2. 구분자가 같은 경우
+		-> csv와 txt파일이 모두 제대로 인식
+
+2. 한 폴더 내에 같은 포맷의 파일이 여러개 있을 때
+	1. table의 내용과 파일의 열 수가 같을 때
+		-> table이 정상적으로 만들어 진다.
+	2. table의 내용보다 파일의 열 수가 많을 때
+		-> 파일의 열에서 앞에서 부터 파일의 열 수만큼 데이터가 생성 (뒷부분 잘림)
+	3. table의 내용보다 파일의 열 수가 적을 떄
+		-> 부족한 부분이 null값으로 채워진다.
+		
+3. table의 내용과 파일의 내용의 자료형이 다를 때
+	-> null값으로 채워진다.
