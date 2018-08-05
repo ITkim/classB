@@ -11,12 +11,14 @@ sudo yum localinstall git-*.rpm perl-Git-*.noarch.rpm -y <br>
 <br><br>
   
 2.  SSL Error 문제 발생시 해결책 <br>
+```
 #yum update -y nss curl libcurl
+```
 
-
----------------------<br>
+<br><br>
 
 3. hive 연동을 위한 추가 설정<br>
+```xml
  <dependencies>
   	<dependency>
   		<groupId>org.apache.hive</groupId>
@@ -36,3 +38,4 @@ sudo yum localinstall git-*.rpm perl-Git-*.noarch.rpm -y <br>
   	</dependency>
 
   </dependencies>
+```
