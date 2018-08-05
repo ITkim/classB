@@ -42,4 +42,7 @@ sudo yum localinstall git-*.rpm perl-Git-*.noarch.rpm -y <br>
 $export CLASSPATH=hadoop의 lib 경로 
 
 $CLASSPATH
+
+제공받은 WordCount.java와 Hadoop 튜터리엘에서 제공하는 두가지 예제로 실습해 보기
+http://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html#Example:_WordCount_v1.0
 ```
