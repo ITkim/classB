@@ -21,7 +21,7 @@ public class WordCount extends Configured implements Tool {
 
     @Override
     public int run(String[] args) throws Exception {
-        Job job = new Job(getConf(), "gkdlaos.wordcount");
+        Job job = new Job(getConf(), "wordcount");
         job.setJarByClass(this.getClass());
         job.setMapperClass(CountMapper.class);
         job.setReducerClass(CountReducer.class);
