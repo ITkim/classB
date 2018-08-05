@@ -38,9 +38,11 @@ sudo yum localinstall git-*.rpm perl-Git-*.noarch.rpm -y <br>
 ```
 
 4. 맵리듀스 실행을 위한 환경 설정 추가 및 확인
+1. 환경 
 ```
 $export CLASSPATH=hadoop의 lib 경로 
 
 $CLASSPATH
+
 
 ```
