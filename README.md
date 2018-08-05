@@ -41,5 +41,6 @@ sudo yum localinstall git-*.rpm perl-Git-*.noarch.rpm -y <br>
 ```
 $export CLASSPATH=hadoop의 lib 경로 
 
-$
+$CLASSPATH
+
 ```
