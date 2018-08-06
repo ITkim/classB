@@ -62,7 +62,7 @@ $export CLASSPATH=hadoop의 lib 경로
 
 $CLASSPATH
 
-제공받은 WordCount.java와 Hadoop 튜터리에서 제공하는 두가지 예제로 실습해 보기
+제공받은 WordCount.java와 Hadoop 튜터리얼에서 제공하는 두가지 예제로 실습해 보기
    http://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html#Example:_WordCount_v1.0
 
 - 제공받은 예제의 test 데이터 - 위키백과 표제어
