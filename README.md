@@ -68,8 +68,7 @@ $CLASSPATH
 - 제공받은 예제의 test 데이터 - 위키백과 표제어
    https://ko.wikipedia.org/wiki/%ED%8A%B9%EC%88%98:%EB%AA%A8%EB%93%A0%EB%AC%B8%EC%84%9C
    
-   https://dumps.wikimedia.org/kowiki/latest/kowiki-latest-all-titles-in-ns0.gz
-   
+   curl https://dumps.wikimedia.org/kowiki/latest/kowiki-latest-all-titles-in-ns0.gz | zcat > kowiki_titles 
    
 - 튜토리얼에서 제공받은 test 데이터 - test 파일 생성 및 서울시 공공데이터 
 
