@@ -37,7 +37,26 @@ sudo yum localinstall git-*.rpm perl-Git-*.noarch.rpm -y <br>
   </dependencies>
 ```
 
-4. 맵리듀스 실행을 위한 환경 설정 추가 및 확인
+4. MySql에 table 생성하기
+```
+ mysql> CREATE TABLE `CityExport` (
+            `ID` int(11) NOT NULL AUTO_INCREMENT,
+            `Name` char(35) NOT NULL DEFAULT '',
+            `CountryCode` char(3) NOT NULL DEFAULT '',
+            `District` char(20) NOT NULL DEFAULT '',
+            `Population` int(11) NOT NULL DEFAULT '0',
+            PRIMARY KEY (`ID`));
+
+   mysql> CREATE TABLE `CityExportStaging` (
+            `ID` int(11) NOT NULL AUTO_INCREMENT,
+            `Name` char(35) NOT NULL DEFAULT '',
+            `CountryCode` char(3) NOT NULL DEFAULT '',
+            `District` char(20) NOT NULL DEFAULT '',
+            `Population` int(11) NOT NULL DEFAULT '0',
+            PRIMARY KEY (`ID`));
+```
+
+5. 맵리듀스 실행을 위한 환경 설정 추가 및 확인
 ```
 $export CLASSPATH=hadoop의 lib 경로 
 
