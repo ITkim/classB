@@ -1,0 +1,6 @@
+import re
+
+data="민지야 오늘은 야구 안 하니?"
+source=re.split(" ",data)
+for i in range(len(source)):
+    print(re.search("[^야$|^은$]",source[i]))
