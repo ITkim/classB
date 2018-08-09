@@ -1,0 +1,3 @@
+import re
+Data = "marketing,martin,attempt,aTom,Homeplus,eMART,LOtte mARt!"
+re.split('o*m',Data)
