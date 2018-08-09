@@ -1,0 +1,17 @@
+import re
+
+#파일 불러오기
+f = open("C:/Users/student/Desktop/w3schools.txt","r")
+
+data = f.read()
+# 태그 붙은거 출력
+r = re.compile("<\w+>")
+r.search(data)
+r.findall(data)
+
+#DOM이 들어간거 갯수
+d = re.compile("DOM+")
+d.search(data)
+d.findall(data)
+
+len(d.findall(data))
