@@ -1,0 +1,43 @@
+#1
+import re
+
+data = "1.Java, 2.DB, 3.html, 4.css, 5.javascript, 6.jsp, 7.python, 8.R"
+
+# d_list = []
+# for i in re.findall("\d+",data):
+#     d_list.append({int(i):re.findall("[a-zA-Z]+",data)[int(i)-1]})
+
+# 함축된 표현식
+d_list = [{int(i):re.findall("[a-zA-Z]+",data)[int(i)-1]} for i in re.findall("\d+",data)]
+
+d_list
+
+
+
+#2
+# 파일 읽어들이기(?)
+import re
+
+col_list = ["시군구코드","법정동코드","시","구","동","도로명코드","도로명","관할행정동"]
+
+data = "11110,1111010100,서울특별시,종로구,청운동,1.11E+11,자하문로,청운효자동\n11111,1111010101,서울특별시,강서구,가양동,1.1111,허준로,가양동"
+
+total = []
+dic = {}
+
+line = re.split("[\n]",data)
+
+for j in range(len(line)):
+    for i in range(len(re.split("[,]",line[j]))):
+        dic[col_list[i]] = re.split("[,]",line[j])[i]
+    total.append(dic)
+    dic={}
+
+total
+
+# 구가 "종로" 포함될 경우만
+result = []
+for i in total:
+    if len(re.findall("종로", i["구"])) == 1:
+        result.append(i)
+result       

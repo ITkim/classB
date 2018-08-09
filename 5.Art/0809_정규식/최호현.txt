@@ -1,0 +1,8 @@
+import re
+ 
+text = "수많은 문장 안에 주민등록번호 찾기 과연 남자일지 912345-6789123 여자일지 1이나 2로 시작하는 주민번호 말고 다른 숫자로 시작하면 어떻게 될까?"
+ 
+a = re.compile(r'\d\d\d\d\d\d-\d\d\d\d\d\d\d')
+b = a.search(text)
+regitNum = b.group()
+print(regitNum) 
