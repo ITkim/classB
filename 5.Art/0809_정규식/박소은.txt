@@ -1,0 +1,18 @@
+import re
+
+pattern1 = '\D*'
+pattern2 = '\d+'
+pattern3 = 'a.e'
+text = 'ace apec age apple: apple75, apple 34 abcde adMin, sample, Cooking'
+
+r=re.compile(pattern)
+result1 = r.findall(text)
+print(result1)
+
+r=re.compile(pattern2)
+result2 = r.findall(text)
+print(result2)
+
+r=re.compile(pattern3)
+result3 = r.findall(text)
+print(result3)
