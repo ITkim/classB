@@ -1,0 +1,33 @@
+1. 소녀시대 -Oh 가사에 "Oh"가 몇 번 나오는 지
+
+import re
+r=re.compile("^Oh")
+str="전에 알던 내가 아냐 Brand New Sound새로워진 나와 함께 One More RoundDance Dance Dance till we run this town오빠 오빠 I'll be I'll be Down Down Down Down서현) 오빠 나좀 봐 나를 좀 바라봐(티파니) 처음이야 이런 내 말투 Ha!(유리) 머리도 하고 화장도 했는데(제시카) 왜 너만 너만 모르니(태연) 두근 두근 가슴이 떨려와요자꾸 자꾸 상상만 하는 걸요(수영) 어떻게 하나 콧대 높던 내가(윤아) 말하고 싶어(같이)Oh Oh Oh 오빠를 사랑해Ah Ah Ah Ah 많이 많이해(써니) 수줍으니 제발 웃지 마요(태연) 진심 이니 놀리지도 말아요또 바보같은 말뿐야(소녀시대)전에 알던 내가 아냐 Brand New Sound새로워진 나와 함께 One More RoundDance Dance Dance till we run this town오빠 오빠 I'll be I'll be Down Down Down Down(제시카) 오빠 잠깐만 잠깐만 들어봐(써니) 자꾸 딴 얘기는 말고(수영) 동생으로만 생각하진 말아(효연) 일년뒤면 후회 할 걸(티파니) 몰라 몰라 내 맘을 전혀 몰라눈치없게 장난만 치는걸요(효연) 어떻게 하나 이 철없는 사람아(서현) 들어봐 정말(소녀시대)Oh Oh Oh 오빠를 사랑해Ah Ah Ah Ah 많이 많이 해(유리) 수줍으니 제발 웃지 마요(윤아) 진심이니 놀리지도 말아요(써니) 또 그러면 난 울지도 몰라(소녀시대)전에 알던 내가 아냐 Brand New Sound뭔가 다른 오늘만은 뜨거운 마음다음 다음 미루지 마 화만 나오빠 오빠 이대로는 No No No No(제시카) Tell me boy boy love it it it it it it it ah!(소녀시대)Oh Oh Oh 오빠를 사랑해Ah Ah Ah Ah 많이 많이해Oh Oh Oh Oh Oh Oh Oh 오빠를 사랑해Ah Ah Ah Ah Ah Ah Ah Ah 많이 많이해(태연) 또 바보 같은 말뿐야(소녀시대)Oh Oh Oh Oh Ah Ah Ah AhOh Oh Oh Oh Oh Oh Oh 오빠를 사랑해Ah Ah Ah Ah Ah Ah Ah Ah 많이 많이해Oh Oh Oh Oh Oh Oh Oh 오빠를 사랑해Ah Ah Ah Ah Ah Ah Ah Ah 많이 많이 Oh"
+re.findall("Oh",str)
+len(str)
+print("Oh의 개수:" ,len(re.findall("Oh",str)))
+
+
+
+
+
+2. 네이버 뉴스 기사의 댓글에서 댓글만 불러오기 -> 실패 ㅠ
+
+
+import urllib.request
+import re
+
+url="https://news.naver.com/main/ranking/read.nhn?m_view=1&includeAllCount=true&mid=etc&sid1=111&rankingType=popular_day&oid=052&aid=0001179397&date=20180809&type=0&rankingSeq=1&rankingSectionId=103"
+text="&page="
+comment= ""
+
+for num in range(1,2):
+    full_url=url+text+str(num)
+    full_html=urllib.request.urlopen(full_url)
+    full_contents=str(full_html.read().decode("cp949"))
+    
+    comment=re.findall(r"\<br\>.+", full_contents)
+
+for result in comment:
+    print(result)
+                       
