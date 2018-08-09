@@ -1,0 +1,30 @@
+정규식 문제 만들기
+- 네이버 검색 시 url분석하기 (GET방식 url)
+
+import re
+
+url = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=멀티캠퍼스"
+list = re.split("/",url)
+str = re.split("[^\w\s]",list[3])
+for idx, data in enumerate(str,0):
+    if data == "where":
+        where = idx + 1
+    if data == "sm":
+        sm = idx+1
+    if data == "fbm":
+        fbm = idx+1
+    if data == "ie":
+        ie = idx+1
+    if data == "query":
+        query = idx+1
+        
+print("where : " + str[where])
+print("sm : " + str[sm])
+print("fbm : " + str[fbm])
+print("ie : " + str[ie])
+print("query : " + str[query])
+
+**특수문자사이의 문자 찾기
+- re.search('.*^=(.*)&$.*',str) : 실패
+- re.match("^.*=(.*)&.*$",str) : 실패
+
