@@ -19,6 +19,10 @@ print(type(m))
 for r in m:
     print(r)
 
+r2 = re.findall(".*?역", data)
+print(r2)
+
+
 print("\n")
 
 #삼성역 주변 
