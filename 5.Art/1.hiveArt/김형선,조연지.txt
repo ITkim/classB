@@ -1,0 +1,36 @@
+﻿Q1. 하나의 파일(sample1.csv)을 서로 다른 두 개의 Table에 넣었을 때 하나의 테이블을 삭제할 경우 어떻게 될까? 
+		
+
+		a. 하나는 종속 table, 하나는 비종속 table인 경우
+
+		-- 종속 table을 삭제했을 때 sample1.csv 파일과 들어가있는 폴더까지 지워진다.
+		-- 비종속 table을 삭제했을 때는 sample1.csv 파일이 그대로 유지
+
+		
+		b. table 둘 다 비종속인 경우
+
+		-- 하나를 삭제해도 sample1.csv파일과 그 경로는 살아있었다.
+		
+		c. table 둘 다 종속인 경우
+		
+		-- 하나를 삭제하면 sample1.csv 파일과 들어가있는 폴더까지 지워졌다.
+		
+		
+		
+Q2. 동일한 구조를 가진 2개의 csv파일(sample1.csv , sample2.csv)을 하나의 table에 넣을 수 있을까? 만약 넣을 수 있다면 테이블을 삭제했을 때 어떻게 될까?	
+		
+		-- 우선 구조가 동일하다면 하나의 table에 모든 내용이 들어간다. 이 때 table이
+
+		a. 종속 table인 경우
+		
+		-- 종속 table을 삭제했을 때 sample1.csv 파일과 sample2.csv 파일 모두 사라지고 들어가있는 폴더까지 지워진다.
+			
+		b. 비종속 table인 경우
+				
+		-- 비종속 table만 사라지고 모두 살아있다.
+
+		
+Q3. warehouse 폴더에 sample1.csv로 종속 table 생성하고, warehouse의 하위 폴더에 sample2.csv로 독립 table 생성했을 때 상위 폴더에 있는 종속 table을 삭제했을 경우 어떻게 될까?
+		
+		-- 상위폴더(warehouse)에 종속 table은 생성 되었으나, select로 내용을 확인하려 했더니 오류가 떴다.
+		-- 종속 table을 삭제했을 경우 warehouse 폴더 자체가 지워졌다. 하위 폴더도 당연히 지워졌다.
