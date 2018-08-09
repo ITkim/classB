@@ -1,0 +1,5 @@
+import re
+x = input('이메일 주소를 입력해주세요 : ')
+a = re.split("[@.]",x)
+print('id는',a[0],'입니다.')
+print('포털 사이트는',a[1],'입니다.')

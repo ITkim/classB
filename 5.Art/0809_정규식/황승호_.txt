@@ -1,0 +1,31 @@
+1.
+import re
+
+PPAPcount = "I have a pen I have a apple Uh Apple Pen I have a pen I have pineapple Uh Pineapple Pen Apple Pen Pineapple Pen Uh Pen Pineapple Apple Pen Pen Pineapple Apple Pen Dance Time Uh Pen pinep pa pa pa apple apple Pen pinep pa pa pa apple pen Pen pinep pa pa pa apple apple Apple pineapple pineapple apple pen Uh uh pineapple pen pen apple apple Uh uh pineapple apple apple pen pen Puh puh pineapple apple apple apple apple Pen pen pen pineapple pen I have a pen I have a pen Uh Long pen I have a apple I have pineapple Uh Apple Pineapple Long pen Apple Pineapple Uh Pen Pineapple Apple Pen Pen Pineapple Apple Pen"
+PPAPcount = re.sub('Pen','pen',PPAPcount)
+PPAPcount = re.sub('Pineapple','pineapple',PPAPcount)
+PPAPcount = re.sub('Apple','apple',PPAPcount)
+#같은 단어가 대문자, 소문자로 다르게 인식될 까봐 일정하게 소문자로 통일, //i를 사용하려했으나 실패
+
+PPAPcount = re.sub('pen','P',PPAPcount)
+PPAPcount = re.sub('pineapple','p',PPAPcount)
+PPAPcount = re.sub('apple','A',PPAPcount)
+#단어를 간단하게 변환
+
+re.findall("P p A P", PPAPcount)
+# pen pineapple apple pen[P p A P]은 노래에서 몇번 나오는가 출력
+
+2.
+
+import re
+
+songCount = input("가사를 입력하시오")
+gasaCount = input("찾을 문장 혹은 단어를 입력하시오(입력을 그만하려면 StOp를 입력하세요)")
+
+if(gasaCount != StOp):
+    gasaCount = input("찾을 문장 혹은 단어를 입력하시오(입력을 그만하려면 StOp를 입력하세요)")
+    #
+else:
+    re.findall(gasaCount[i], songCount)
+
+#실패

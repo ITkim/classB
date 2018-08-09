@@ -1,3 +1,5 @@
+# 이메일 주소의 '아이디'와 그 아이디에 따른 '어떤 포탈'의 이메일을 사용하고 있는지를 보고자 함
+
 import re
 
 a = []
@@ -9,8 +11,7 @@ address = ["abc123@naver.com", "def456@daum.net", "ghi789@google.com"]
 for x in range(3):
     address[x]
     a = re.split('[@.]', address[x])
-    #print(a)
-    
+        
     for y in range(1): 
         a[y]
         b.append(a[y])
