@@ -1,0 +1,38 @@
+# 따릉이 정류소(강남구)
+import re
+
+f = open("test.txt","r")
+data = f.read()
+
+#뛰어쓰기 없애기..
+re.sub(' ', '',data)
+
+print(data)
+
+#역 주변 찾기
+r= re.compile("[**역$]+")
+
+m= r.finditer(data)
+print(m)
+print(type(m))
+
+for r in m:
+    print(r)
+
+print("\n")
+
+#삼성역 주변 
+r= re.compile("삼성")
+m= r.finditer(data)
+
+for r in m:
+    print(r)
+    
+print("\n")
+
+#split \n으로
+print(re.split('[\n]+', data))
+
+
+f.close()
+
