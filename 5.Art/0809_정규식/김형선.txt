@@ -1,0 +1,19 @@
+import re
+x = "황선주,김인수,정현영,고기원,정민지,한상우,강현식,윤기영,신혜영,이원경,조용철,조연지,최호현,김형선,이한나,이한용,강상현,박소은,김범주,김현성,황승호,박성민,김용진"
+
+y = re.split("[,]",x)
+z = []
+firstname = dict()
+
+for num in range(len(y)):
+    z.append(y[num][0])
+    
+
+ 
+for i in z:
+    if (i in firstname):
+        firstname[i] = firstname[i] + 1
+    else:
+        firstname[i] = 1
+
+firstname
