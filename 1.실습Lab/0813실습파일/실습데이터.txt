@@ -1,0 +1,92 @@
+* 실습용 test data
+
+1. 리스트로 데이터 프레임 생성하기
+
+friends = [['신동엽',20,'연예인','music'], 
+           ['유재석',41,'교수','art'], 
+           ['김새롬',18,'학생','study'], 
+           ['이영자',45,'상담사','talk'], 
+           ['강호동',38,'연예인','talk']]
+
+df = pd.DataFrame.from_records(friends)
+
+
+
+2. 딕셔너리로 데이터 프레임 생성하기
+
+friend_dict_list = [{'name': '신동엽', 'age': 20, 'job': '연예인', 'hobby':'music'},
+                     {'name': '유재석', 'age': 41, 'job': '교수', 'hobby':'art'},
+                     {'name': '김새롬', 'age': 18, 'job': '학생', 'hobby':'study'},
+                     {'name': '이영자', 'age' : 45, 'job': '상담사', 'hobby' : 'talk'},
+                     {'name' :  '강호동', 'age' : 38, 'job' : '연예인', 'hobby' : 'talk'}]
+
+df = pd.DataFrame(friend_dict_list)
+
+
+
+
+3. 중복 데이터
+
+
+friend_dict_list = [{'name': '신동엽', 'age': 20, 'job': '연예인', 'hobby':'music'},
+                     {'name': '유재석', 'age': 41, 'job': '교수', 'hobby':'art'},
+                     {'name': '김새롬', 'age': 18, 'job': '학생', 'hobby':'study'},
+                     {'name': '이영자', 'age' : 45, 'job': '상담사', 'hobby' : 'talk'},
+                     {'name' :  '강호동', 'age' : 38, 'job' : '연예인', 'hobby' : 'talk'},
+                    {'name': '신동엽', 'age': 20, 'job': '연예인', 'hobby':'music'} ]
+
+df = pd.DataFrame(friend_dict_list)
+df=df[['name', 'age', 'job', 'hobby']]
+
+df
+
+
+
+4. age가 None
+
+
+friend_dict_list = [{'name': '신동엽', 'age': 20, 'job': '연예인', 'hobby':'music'},
+                     {'name': '유재석', 'age': 41, 'job': '교수', 'hobby':'art'},
+                     {'name': '김새롬', 'age': 18, 'job': '학생', 'hobby':'study'},
+                     {'name': '이영자', 'age' : 45, 'job': '상담사', 'hobby' : 'talk'},
+                     {'name' :  '강호동', 'age' : 38, 'job' : '연예인', 'hobby' : 'talk'},
+                    {'name': '신동엽', 'age': None, 'job': '연예인', 'hobby':'music'} ]
+
+df = pd.DataFrame(friend_dict_list)
+df=df[['name', 'age', 'job', 'hobby']]
+
+
+
+
+5. Unique data
+
+friend_dict_list = [{'name': '신동엽', 'age': 20, 'job': '연예인', 'hobby':'music'},
+                     {'name': '유재석', 'age': 41, 'job': '교수', 'hobby':'art'},
+                     {'name': '김새롬', 'age': 18, 'job': '학생', 'hobby':'study'},
+                     {'name': '이영자', 'age' : 45, 'job': '상담사', 'hobby' : 'talk'},
+                     {'name' : '강호동', 'age' : 38, 'job' : '연예인', 'hobby' : 'talk'},
+                     {'name': '신동엽', 'age': None, 'job': '연예인', 'hobby':'music'},
+                     {'name': '고현정', 'age': 44, 'job': '가수', 'hobby':'music'},
+                     {'name': '박민영', 'age': 22, 'job': '학생', 'hobby':'art'},
+                     {'name': '박서준', 'age': 18, 'job': '학생', 'hobby':'study'},
+                     {'name': '박보검', 'age' : 45, 'job': '상담사', 'hobby' : 'talk'},
+                     {'name' : '이효리', 'age' : 28, 'job' : '교수', 'hobby' : 'talk'},
+                    {'name': '이상순', 'age': 29, 'job': '주부', 'hobby':'music'}]
+
+df = pd.DataFrame(friend_dict_list)
+df=df[['name', 'age', 'job', 'hobby']]
+
+
+
+7. 두개의 DataFramew 병합하기
+
+l1 = [{'name': '이효리', 'job': "교수"},
+      {'name': '이상순', 'job': "학생"},
+      {'name': '박보검', 'job': "개발자"}]
+
+l2 = [{'name': '신동엽', 'job': "치과의사"},
+      {'name': '이영자', 'job': "농부"},
+      {'name': '정찬우', 'job': "연예인"}]
+         
+df1 = pd.DataFrame(l1, columns = ['name', 'job'])
+df2 = pd.DataFrame(l2, columns = ['name', 'job'])
