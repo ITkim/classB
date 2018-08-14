@@ -77,3 +77,10 @@ $CLASSPATH
 6. word cloud 참고 사이트
 
 https://bl.ocks.org/wnghdcjfe/de87a75a9445c88061ad50edc1d4ac8d
+
+
+7. ajax
+
+data = this.responseText;
+all = data.split(/\r\n|\r|\n/);
+document.getElementById("n1").value = all[1];
