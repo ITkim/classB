@@ -73,3 +73,7 @@ $CLASSPATH
 - 튜토리얼에서 제공받은 test 데이터 - test 파일 생성 및 서울시 공공데이터 
 
 ```
+
+6. word cloud 참고 사이트
+
+https://bl.ocks.org/wnghdcjfe/de87a75a9445c88061ad50edc1d4ac8d
