@@ -1,0 +1,6 @@
+write.csv(rst, "file=rst.csv")
+rst
+# csv파일로 저장한 rst 테이블에서 SAL의 평균
+mean(rst$SAL)
+# dept테이블에 새 행 삽입 - 실패
+dbGetQuery(conn, "insert into dept values(50, 'management', 'Florida')")
