@@ -1,0 +1,12 @@
+# test1 - emp table : 각 직업별 인원수 막대그래프 구하기
+str(rst)
+rst$JOB = as.factor(rst$JOB)
+table(rst$JOB)
+qplot(rst$JOB)
+
+
+
+# test2 - emp table : 각 직업별 평균 연봉수치 구하기
+install.packages("dplyr")
+library(dplyr)
+rst %>% group_by(JOB) %>% summarize(mean_salary=mean(SAL))
