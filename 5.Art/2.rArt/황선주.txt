@@ -1,0 +1,46 @@
+
+install.packages("rJava")
+install.packages("DBI")
+install.packages("RJDBC")
+
+library(rJava)
+library(DBI)
+library(RJDBC)
+
+#driver 로딩 
+drv = JDBC("oracle.jdbc.driver.OracleDriver","C:\\oraclexe\\app\\oracle\\product\\11.2.0\\server\\jdbc\\lib\\ojdbc6.jar")
+
+#접속
+conn <-dbConnect(drv,"jdbc:oracle:thin:@127.0.0.1:1521:xe","SCOTT","TIGER")
+conn
+
+rst<- dbGetQuery(conn,"select * from emp")
+rst
+
+df_newcompany<-data.frame(rst)
+df_newcompany<-data.frame(rst,age=c(33,45,23,29,36,27,52,37,39,25,46,55))
+write.csv(df_newcompany, file="df_newcompany.csv")
+
+
+deptRst<- dbGetQuery(conn, "select * from dept")
+deptRst
+
+nwempno<-dbGetQuery(conn, "select empno from emp")
+nwename<-dbGetQuery(conn, "select ename from emp")
+nwjob<-dbGetQuery(conn, "select job from emp")
+nwmgr<-dbGetQuery(conn, "select mgr from emp")
+nwhiredate<-dbGetQuery(conn, "select hiredate from emp")
+nwsal<-dbGetQuery(conn, "select sal from emp")
+nwcomm<-dbGetQuery(conn, "select comm from emp")
+nwdeptno<-dbGetQuery(conn, "select deptno from emp")
+
+df_company<-data.frame(nwempno,nwename,nwjob,nwmgr,nwhiredate,nwsal,nwcomm,nwdeptno)
+df_company
+write.csv(df_company, file="df_company.csv")
+
+newdeptno<-dbGetQuery(conn, "select deptno from dept")
+newdname<-dbGetQuery(conn, "select dname from dept")
+newloc<-dbGetQuery(conn, "select loc from dept")
+
+df_comdept<-data.frame(newdeptno,newdname,newloc)
+df_comdept
