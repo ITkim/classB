@@ -1,0 +1,8 @@
+#emp 테이블 rst.csv로 저장하기
+write.csv(rst, file="rst.csv")
+#emp 테이블에서 평균임금계산
+mean(rst$SAL)
+#emp 테이블에서 max임금 출력
+max(rst$SAL)
+#emp 테이블에서 min임금 출력
+min(rst$SAL)
