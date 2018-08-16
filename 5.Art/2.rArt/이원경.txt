@@ -1,0 +1,16 @@
+#dbExistsTable
+exRst <- dbExistsTable(conn, "ABCD")
+exRst #FALSE
+exRst <- dbExistsTable(conn, "EMP")
+exRst #TRUE
+
+
+#sqlColumnToRownames -> ½ÇÆÐ
+sqlRownamesToColumn(head(MGR),"GMR")
+
+
+#dbGetQuery
+noRst <-dbGetQuery(conn,"select*from dept")
+noRst
+dbGetQuery(conn,"insert into dept values(50,'IT','PRAGUE')")
+noRst
