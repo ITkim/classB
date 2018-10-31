@@ -5,7 +5,7 @@
 ```
 wget http://springdale.math.ias.edu/data/puias/computational/6/x86_64/git-1.8.3.1-1.sdl6.x86_64.rpm
 wget http://springdale.math.ias.edu/data/puias/computational/6/x86_64/perl-Git-1.8.3.1-1.sdl6.noarch.rpm
-sudo yum remove git -y <br>
+sudo yum remove git -y
 sudo yum localinstall git-*.rpm perl-Git-*.noarch.rpm -y
 ```
  
