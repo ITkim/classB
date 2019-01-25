@@ -1,9 +1,0 @@
-﻿import re
-string = "The city is situated on an isthmus between Puget Sound(an inlet of the Pacific Ocean) and Lake Washington, about 100 miles (160 km) south of the Canada–United States border. A major gateway for trade with Asia, Seattle is the fourth-largest port in North America in terms of container handling as of 2015."
-
-s = re.findall("S.a", string)
-t = re.split('[,]+', string)
-u = re.sub("Seattle", "시애틀", string)
-
-
-print(s, t, u)
