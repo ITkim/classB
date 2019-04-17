@@ -1,6 +1,6 @@
 # classB
 
-1. 클래우데라에서 git 사용을 위한 버전업을 위한 설정.
+1. 클래우데라에서 git 사용을 위한 버전업을 위한 설정
 
 ```
 wget http://springdale.math.ias.edu/data/puias/computational/6/x86_64/git-1.8.3.1-1.sdl6.x86_64.rpm
